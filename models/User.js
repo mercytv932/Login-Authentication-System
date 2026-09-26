@@ -8,9 +8,8 @@ const userSchema = new mongoose.Schema({
 });
 
 //password  hashing
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, 10);
-  next();
 });
 
 //passwor checking method

@@ -24,10 +24,13 @@ router.post("/register", async (req, res) => {
       const userData = newUser.toObject();
       delete userData.password;
 
-      return res.status(201).json({ message: "Registration successful" });
+      return res
+        .status(201)
+        .json({ message: "Registration successful", userData });
     }
   } catch (error) {
-    res.status(500).json({ message: "Registration failed", userData });
+    console.error(error);
+    res.status(500).json({ message: "Registration failed" });
   }
 });
 
